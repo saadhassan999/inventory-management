@@ -2,6 +2,17 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.0.
 
+## Installation
+
+To get started with this project, follow these steps:
+
+1. **Install Node.js**: This project requires Node.js to be installed. If you don't have it installed, you can download it from the official website: [Node.js](https://nodejs.org/)
+
+2. **Install Angular CLI**: Angular CLI is a powerful tool for creating and managing Angular applications. To install it, open a terminal or command prompt and run the following command:
+
+   ```bash
+   npm install -g @angular/cli
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
