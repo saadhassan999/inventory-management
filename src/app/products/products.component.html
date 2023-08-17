@@ -1,0 +1,97 @@
+<div class="container mt-4">
+  <h2 class="mb-3">Products</h2>
+  <div class="table-responsive">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Description</th>
+          <th>Quantity</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let product of products">
+          <td style="display: none">{{ product.id }}</td>
+          <td>{{ product.name }}</td>
+          <td>{{ product.description }}</td>
+          <td>{{ product.quantity }}</td>
+          <td>
+            <button
+              class="btn btn-sm btn-primary mr-2"
+              (click)="openEditProductModal(product)"
+            >
+              Edit
+            </button>
+            |
+            <button
+              class="btn btn-sm btn-danger"
+              (click)="deleteProduct(product.id)"
+            >
+              Delete
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <button class="btn btn-success mt-3" (click)="openCreateProductModal()">
+    Create Product
+  </button>
+</div>
+
+<!-- Create/Edit Product Modal -->
+<ng-template #modalContent let-modal>
+  <div class="modal-header">
+    <h5 class="modal-title" id="modal-title">{{ modalTitle }}</h5>
+    <button
+      type="button"
+      class="close"
+      aria-label="Close"
+      (click)="closeModal()"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form (ngSubmit)="onSubmit()" #productForm="ngForm">
+      <div class="form-group">
+        <label for="editProductName">Name</label>
+        <input
+          type="text"
+          class="form-control"
+          id="editProductName"
+          [(ngModel)]="editingProduct.name"
+          name="editProductName"
+          required
+          #productName="ngModel"
+        />
+      </div>
+      <div class="form-group">
+        <label for="editProductDescription">Description</label>
+        <textarea
+          class="form-control"
+          id="editProductDescription"
+          [(ngModel)]="editingProduct.description"
+          name="editProductDescription"
+          required
+          #productDescription="ngModel"
+        ></textarea>
+      </div>
+      <div class="form-group">
+        <label for="editProductQuantity">Quantity</label>
+        <input
+          type="number"
+          class="form-control"
+          id="editProductQuantity"
+          [(ngModel)]="editingProduct.quantity"
+          name="editProductQuantity"
+          required
+          #productQuantity="ngModel"
+        />
+      </div>
+      <br />
+      <button type="submit" class="btn btn-primary">Save</button>
+    </form>
+  </div>
+</ng-template>
